@@ -24,8 +24,24 @@ module Flickrip
       if g.count == 1
         return Hash[ [:user,:imageid].zip g[0] ]
       end
-      
+
+      # if we get here, we didnt have a valid flickr url
       {}
+    end
+
+    def self.is_set?(url)
+      h = self.parse(url)
+      h.has_key?(:user) && h.has_key?(:setid)
+    end
+
+    def self.is_in_set?(url)
+      h = self.parse(url)
+      h.has_key?(:user) && h.has_key?(:setid) && h.has_key?(:imageid)
+    end
+
+    def self.is_image?(url)
+      h = self.parse(url)
+      h.has_key?(:user) && h.has_key?(:imageid)
     end
   end
 end

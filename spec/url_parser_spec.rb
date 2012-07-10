@@ -78,4 +78,16 @@ describe Flickrip::UrlParser do
   it 'Parser cant parse a junk url' do
     Flickrip::UrlParser.parse( @junkurl ).should == {}
   end
+
+  it 'Parser can determine setness of a url' do
+    Flickrip::UrlParser.is_set?( @setsurl ).should == true
+  end
+  
+  it 'Parser can determine insetness of a url' do
+    Flickrip::UrlParser.is_in_set?( @isseturl ).should == true
+  end
+
+  it 'Parser can determine imageness of a url' do
+    Flickrip::UrlParser.is_image?( @imageurl ).should == true
+  end
 end
