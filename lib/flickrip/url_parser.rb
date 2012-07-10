@@ -1,12 +1,12 @@
 
 module Flickrip
   class UrlParser
-    SET_REGEX = /.*flickr.*\/(.*)\/sets\/(\d+)/
-    IN_SET_REGEX = /.*flickr.*\/(.*)\/(\d+)\/in\/set-(\d+)/
-    IMAGE_REGEX = /.*flickr.*\/(.*)\/(\d+)/
+    SET_REGEX = /^http.*flickr.*\/(.*)\/sets\/(\d+)/
+    IN_SET_REGEX = /^http.*flickr.*\/(.*)\/(\d+)\/in\/set-(\d+)/
+    IMAGE_REGEX = /^http.*flickr.*\/(.*)\/(\d+)/
 
     def self.parse(url)
-      h = {}
+      return {} if url.nil?
       # test for "/in-set/"
       g = url.scan IN_SET_REGEX
       if g.count == 1
@@ -25,7 +25,7 @@ module Flickrip
         return Hash[ [:user,:imageid].zip g[0] ]
       end
       
-      h
+      {}
     end
   end
 end

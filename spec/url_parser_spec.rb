@@ -23,6 +23,15 @@ describe Flickrip::UrlParser do
     @imagehash = {:user=>"d3sign",:imageid=>"7441358166"}
   end
 
+  it 'Parser cant parse a nil url' do
+    Flickrip::UrlParser.parse( nil ).should == {}
+  end
+
+  it 'Parser cant parse a malformed url' do
+    Flickrip::UrlParser.parse( "flickr/d3sign/7441358166/" ).should == {}
+  end
+
+
   it 'Parser finds in-set Url on mobile isseturl' do
     Flickrip::UrlParser.parse( @isseturl_mobile ).should == @insethash
   end
