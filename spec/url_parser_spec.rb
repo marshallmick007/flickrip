@@ -5,12 +5,15 @@ describe Flickrip::UrlParser do
     @isseturl_mobile = "http://m.flickr.com/#/photos/d3sign/7441358166/in/set-72157630283819102/"
     @setsurl_mobile  = "http://m.flickr.com/#/photos/d3sign/sets/72157630283819102/"
     @imageurl_mobile = "http://m.flickr.com/#/photos/d3sign/7441358166/"
+    @photourl_mobile = "http://m.flickr.com/#/photos/d3sign/7441358166/sizes/l/in/photostream/"
+
     @junkfurl_mobile = "http://m.flickr.com/#/junk/nothing/t0/s33/here/"
 
     #non-mobile
     @isseturl = "http://www.flickr.com/photos/d3sign/7441358166/in/set-72157630283819102/"
     @setsurl  = "http://www.flickr.com/photos/d3sign/sets/72157630283819102/"
     @imageurl = "http://www.flickr.com/photos/d3sign/7441358166/"
+    @photourl = "http://www.flickr.com/photos/d3sign/7441358166/sizes/l/in/photostream/"
     @junkfurl = "http://www.flickr.com/junk/nothing/t0/s33/here/"
 
     @junkurl         = "http://www.someothersite.com/test"
@@ -32,6 +35,11 @@ describe Flickrip::UrlParser do
     Flickrip::UrlParser.parse( @imageurl_mobile ).should == @imagehash
   end
 
+    it 'Parser finds image Url on photourl' do
+    Flickrip::UrlParser.parse( @photourl_mobile ).should == @imagehash
+  end
+
+
   it 'Parser cant parse a junk mobile flickr url' do
     Flickrip::UrlParser.parse( @junkfurl_mobile ).should == {}
   end
@@ -47,6 +55,11 @@ describe Flickrip::UrlParser do
   it 'Parser finds image Url on imageurl' do
     Flickrip::UrlParser.parse( @imageurl ).should == @imagehash
   end
+
+  it 'Parser finds image Url on photourl' do
+    Flickrip::UrlParser.parse( @photourl ).should == @imagehash
+  end
+
 
   it 'Parser cant parse a junk flickr url' do
     Flickrip::UrlParser.parse( @junkfurl ).should == {}
