@@ -1,7 +1,7 @@
 # About
 
-Flickrip is a HTTP 'client' for Flickr. It supports tokenizing of Flickr
-Url's to flickr 'ids'
+Flickrip is a HTTP 'client' for Flickr. It supports parsing of Flickr
+Url's to Flickr 'tokens;
 
     url = "http://www.flickr.com/photos/marshallmickelson/5092430638/in/set-72157624713794623/"
     Flickrip::UrlParser.parse( url )
@@ -18,3 +18,8 @@ image hidden behind Flickr's un-userfriendly website
 
     flickr.largest_image
     # opens the largest image size flickr supports for this image
+
+## Caveat
+
+This gem does not use Flickr's official API, but scrapes portions of the
+actual DOM.
