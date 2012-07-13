@@ -1,6 +1,7 @@
 require 'rspec'
 require 'flickrip'
 require 'flickrip/url_parser'
+require 'flickrip/flickr_image'
 
 
 RSpec.configure do |config|

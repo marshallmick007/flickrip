@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
   s.description = "Inspects flickr http/dom, and allows downloading of images and full sets"
   s.homepage    = "http://github.com/marshallmick007/flickrip"
 
+  s.add_dependency('nokogiri')
+  #s.add_dependency('open-uri')
   s.files = Dir.glob("lib/**/*.rb")
   s.test_files  = Dir.glob("{spec,test}/**/*.rb")
 
